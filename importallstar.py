@@ -12,8 +12,10 @@ c.execute("""create table allstars (
                 lgID text)""")
 
 # csv.DictReader uses the first line in the file as column headings by default
-dr = csv.DictReader(open('Allstar.csv', 'rb'), delimiter=',')
-to_db = [(i['playerID'], i['yearID'], i['lgID']) for i in dr]
-c.executemany("insert into allstars (playerID, yearID, lgID) values (?, ?, ?);", to_db)
+data = csv.DictReader(open('Allstar.csv', 'rb'), delimiter=',')
+
+to_db = [(i['playerID'], i['yearID'], i['lgID']) for i in data]
+
+c.executemany("""insert into allstars (playerID, yearID, lgID) values (?, ?, ?);""", to_db)
 
 con.commit()
