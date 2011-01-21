@@ -6,9 +6,10 @@ con = sqlite3.connect('baseballstats.db')
 c = con.cursor()
 
 # Create the table
-c.execute("""create table allstars (playerID text,
-                                       yearID integer,
-                                       lgID text)""")
+c.execute("""create table allstars (
+                playerID text,
+                yearID integer,
+                lgID text)""")
 
 # csv.DictReader uses the first line in the file as column headings by default
 dr = csv.DictReader(open('Allstar.csv', 'rb'), delimiter=',')
