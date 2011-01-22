@@ -1,5 +1,3 @@
-"managerID","awardID","yearID","lgID","tie","notes"
-
 import csv
 import sqlite3
 
