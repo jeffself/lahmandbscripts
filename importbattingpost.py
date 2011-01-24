@@ -45,4 +45,3 @@ c.executemany("""insert into battingpost (yearID, round, playerID, teamID,
                             ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);""", to_db)
 
 con.commit()
-"yearID","round","playerID","teamID","lgID","G","AB","R","H","2B","3B","HR","RBI","SB","CS","BB","SO","IBB","HBP","SH","SF","GIDP"
