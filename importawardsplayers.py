@@ -17,8 +17,8 @@ c.execute("""create table awardsplayers (
 # csv.DictReader uses the first line in the file as column headings by default
 data = csv.DictReader(open('AwardsPlayers.csv', 'rb'), delimiter=',')
 
-to_db = [(i['playerID'], i['awardID'], i['yearID'], \
-          i['lgID'], i['tie'], i['notes']) for i in data]
+to_db = ((i['playerID'], i['awardID'], i['yearID'], \
+          i['lgID'], i['tie'], i['notes']) for i in data)
 
 c.executemany("""insert into awardsplayers (playerID, awardID, yearID, lgID,
                 tie, notes)

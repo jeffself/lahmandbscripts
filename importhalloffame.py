@@ -19,9 +19,9 @@ c.execute("""create table halloffame (
 # csv.DictReader uses the first line in the file as column headings by default
 data = csv.DictReader(open('HallOfFame.csv', 'rb'), delimiter=',')
 
-to_db = [(i['hofID'], i['yearid'], i['votedBy'], i['ballots'], i['needed'], \
+to_db = ((i['hofID'], i['yearid'], i['votedBy'], i['ballots'], i['needed'], \
           i['votes'], i['inducted'], i['category']) \
-          for i in data]
+          for i in data)
 
 c.executemany("""insert into halloffame (hofID, yearid, votedBy, ballots,
                     needed, votes, inducted, category) 

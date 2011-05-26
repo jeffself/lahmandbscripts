@@ -44,7 +44,7 @@ c.execute("""create table masters (
 # csv.DictReader uses the first line in the file as column headings by default
 data = csv.DictReader(open('Master.csv', 'rb'), delimiter=',')
 
-to_db = [(i['lahmanID'], i['playerID'], i['managerID'], i['hofID'], \
+to_db = ((i['lahmanID'], i['playerID'], i['managerID'], i['hofID'], \
           i['birthYear'], i['birthMonth'], i['birthDay'], i['birthCountry'], \
           i['birthState'], i['birthCity'], i['deathYear'], i['deathMonth'], \
           i['deathDay'], i['deathCountry'], i['deathState'], i['deathCity'], \
@@ -52,7 +52,7 @@ to_db = [(i['lahmanID'], i['playerID'], i['managerID'], i['hofID'], \
           i['nameNick'], i['weight'], i['height'], i['bats'], i['throws'], \
           i['debut'], i['finalGame'], i['college'], i['lahman40ID'], \
           i['lahman45ID'], i['retroID'], i['holtzID'], i['bbrefID']) \
-          for i in data]
+          for i in data)
           
 c.executemany("""insert into masters (
                 lahmanID, playerID, managerID, hofID, birthYear, birthMonth, 

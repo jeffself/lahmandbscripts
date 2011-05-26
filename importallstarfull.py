@@ -18,8 +18,8 @@ c.execute("""create table allstarsfull (
 # csv.DictReader uses the first line in the file as column headings by default
 data = csv.DictReader(open('AllstarFull.csv', 'rb'), delimiter=',')
 
-to_db = [(i['playerID'], i['yearID'], i['gameNum'], i['teamID'], \
-            i['lgID'], i['GP'], i['startingPos']) for i in data]
+to_db = ((i['playerID'], i['yearID'], i['gameNum'], i['teamID'], \
+            i['lgID'], i['GP'], i['startingPos']) for i in data)
 
 c.executemany("""insert into allstarsfull (playerID, yearID, gameNum, teamID, lgID, GP, startingPos)
                  values (?, ?, ?, ?, ?, ?, ?);""", to_db)

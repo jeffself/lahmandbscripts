@@ -29,10 +29,10 @@ c.execute("""create table fielding (
 # csv.DictReader uses the first line in the file as column headings by default
 data = csv.DictReader(open('Fielding.csv', 'rb'), delimiter=',')
 
-to_db = [(i['playerID'], i['yearID'], i['stint'], i['teamID'], i['lgID'], \
+to_db = ((i['playerID'], i['yearID'], i['stint'], i['teamID'], i['lgID'], \
           i['POS'], i['G'], i['GS'], i['InnOuts'], i['PO'], i['A'], i['E'], \
           i['DP'], i['PB'], i['WP'], i['SB'], i['CS'], i['ZR']) \
-          for i in data]
+          for i in data)
 
 c.executemany("""insert into fielding (playerID, yearID, stint, teamID,
                     lgID, POS, G, GS, InnOuts, PO, assists, errors, DP, 

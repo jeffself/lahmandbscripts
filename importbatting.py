@@ -35,11 +35,11 @@ c.execute("""create table batting (
 # csv.DictReader uses the first line in the file as column headings by default
 data = csv.DictReader(open('Batting.csv', 'rb'), delimiter=',')
 
-to_db = [(i['playerID'], i['yearID'], i['stint'], i['teamID'], i['lgID'], \
+to_db = ((i['playerID'], i['yearID'], i['stint'], i['teamID'], i['lgID'], \
           i['G'], i['G_batting'], i['AB'], i['R'], i['H'], i['2B'], \
           i['3B'], i['HR'], i['RBI'], i['SB'], i['CS'], i['BB'], \
           i['SO'], i['IBB'], i['HBP'], i['SH'], i['SF'], i['GIDP'], \
-          i['G_old']) for i in data]
+          i['G_old']) for i in data)
 
 c.executemany("""insert into batting (playerID, yearID, stint, teamID,
                     lgID, G, G_batting, AB, R, H, Doubles, Triples, HR, RBI, 
