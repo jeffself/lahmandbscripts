@@ -5,8 +5,8 @@ con = sqlite3.connect('baseballstats.db')
 con.text_factory = str
 c = con.cursor()
 
-# Create the Masters table
-c.execute("""create table masters (
+# Create the Master table
+c.execute("""create table master (
             lahmanID integer,
             playerID text,
             managerID text,
@@ -54,7 +54,7 @@ to_db = ((i['lahmanID'], i['playerID'], i['managerID'], i['hofID'], \
           i['lahman45ID'], i['retroID'], i['holtzID'], i['bbrefID']) \
           for i in data)
           
-c.executemany("""insert into masters (
+c.executemany("""insert into master (
                 lahmanID, playerID, managerID, hofID, birthYear, birthMonth, 
                 birthDay, birthCountry, birthState, birthCity, deathYear, 
                 deathMonth, deathDay, deathCountry, deathState, deathCity, 
