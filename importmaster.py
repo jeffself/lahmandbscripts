@@ -44,7 +44,7 @@ c.execute("""create table masters (
 # csv.DictReader uses the first line in the file as column headings by default
 data = csv.DictReader(open('Master.csv', 'rb'), delimiter=',')
 
-to_db = [(i['lahmanID'], i['playerID'], i['managerID'], i['hofID'], \ 
+to_db = [(i['lahmanID'], i['playerID'], i['managerID'], i['hofID'], \
           i['birthYear'], i['birthMonth'], i['birthDay'], i['birthCountry'], \
           i['birthState'], i['birthCity'], i['deathYear'], i['deathMonth'], \
           i['deathDay'], i['deathCountry'], i['deathState'], i['deathCity'], \

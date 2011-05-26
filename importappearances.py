@@ -32,10 +32,10 @@ c.execute("""create table appearances (
 data = csv.DictReader(open('Appearances.csv', 'rb'), delimiter=',')
 
 to_db = [(
-        i['yearID'], i['teamID'], i['lgID'], i['playerID'], ['G_all'], \
+        i['yearID'], i['teamID'], i['lgID'], i['playerID'], i['G_all'], \
         i['G_batting'], i['G_defense'], i['G_p'], i['G_c'], i['G_1b'], \
         i['G_2b'], i['G_3b'], i['G_ss'], i['G_lf'], i['G_cf'], i['G_rf'], \
-        i['G_of'], i['G_dh'], ['G_ph'], i['G_pr']) for i in data]
+        i['G_of'], i['G_dh'], i['G_ph'], i['G_pr']) for i in data]
 
 c.executemany("""insert into appearances (
                 yearID, teamID, lgID, playerID, G_all, G_batting, G_defense, 
