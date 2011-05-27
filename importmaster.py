@@ -5,8 +5,8 @@ con = sqlite3.connect('baseballstats.db')
 con.text_factory = str
 c = con.cursor()
 
-# Create the Masters table
-c.execute("""create table masters (
+# Create the Master table
+c.execute("""create table master (
             lahmanID integer,
             playerID text,
             managerID text,
@@ -44,7 +44,7 @@ c.execute("""create table masters (
 # csv.DictReader uses the first line in the file as column headings by default
 data = csv.DictReader(open('Master.csv', 'rb'), delimiter=',')
 
-to_db = [(i['lahmanID'], i['playerID'], i['managerID'], i['hofID'], \ 
+to_db = ((i['lahmanID'], i['playerID'], i['managerID'], i['hofID'], \
           i['birthYear'], i['birthMonth'], i['birthDay'], i['birthCountry'], \
           i['birthState'], i['birthCity'], i['deathYear'], i['deathMonth'], \
           i['deathDay'], i['deathCountry'], i['deathState'], i['deathCity'], \
@@ -52,9 +52,9 @@ to_db = [(i['lahmanID'], i['playerID'], i['managerID'], i['hofID'], \
           i['nameNick'], i['weight'], i['height'], i['bats'], i['throws'], \
           i['debut'], i['finalGame'], i['college'], i['lahman40ID'], \
           i['lahman45ID'], i['retroID'], i['holtzID'], i['bbrefID']) \
-          for i in data]
+          for i in data)
           
-c.executemany("""insert into masters (
+c.executemany("""insert into master (
                 lahmanID, playerID, managerID, hofID, birthYear, birthMonth, 
                 birthDay, birthCountry, birthState, birthCity, deathYear, 
                 deathMonth, deathDay, deathCountry, deathState, deathCity, 
